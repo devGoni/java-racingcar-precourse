@@ -16,7 +16,17 @@ public class Cars {
         return carName.split(",");
     }
 
-    public static boolean checkLength(String[] cars) throws IllegalArgumentException{
+    public static boolean checkInput(String[] cars) throws IllegalArgumentException {
+        try {
+            checkLength(cars);
+        } catch(IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public static void checkLength(String[] cars) throws IllegalArgumentException {
         for(String carName : cars) {
             if(carName.length() > MAX_LENGTH) {
                 throw new IllegalArgumentException(MAX_LENGTH_ERROR_MSG);
@@ -24,6 +34,5 @@ public class Cars {
                 throw new IllegalArgumentException(MIN_LENGTH_ERROR_MSG);
             }
         }
-        return true;
     }
 }

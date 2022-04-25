@@ -5,27 +5,24 @@ import camp.nextstep.edu.missionutils.Randoms;
 
 public class Racing {
 
-    private Racing() {
-    }
+    public static int NUMBER_MOVE = 3;
+    public static final String INPUT_TRY_MSG = "시도할 회수";
 
-    // 시도횟수 입력
     public static int inputTry() {
-        System.out.println("시도할 회수");
+        System.out.println(INPUT_TRY_MSG);
         return Integer.parseInt(Console.readLine());
     }
 
-    // 자동차 이동
     public static String moveCar(int countAttempt) {
         String result = "";
         for(int i = 0; i < countAttempt; i++){
             int radomsResult = Randoms.pickNumberInRange(1, 9);
-            result += (radomsResult > 3) ? "-":"";
+            result += (radomsResult > NUMBER_MOVE) ? "-":"";
         }
         return result;
     }
 
-    // 우승자 확인
-    public static String whoIsWinner(String[] players, String[] result) {
+    public static String setWinner(String[] players, String[] result) {
         String winners = "";
         String check = "";
         for(int i = 0; i < players.length; i++){

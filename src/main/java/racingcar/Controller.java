@@ -6,11 +6,25 @@ public class Controller {
     }
 
     public void race() {
-        String[] cars = Cars.inputCars();  // 자동차이름
-        String[] result = new String[cars.length];  // 결과
-        // 시도횟수 입력
+        String[] cars = null;
+
+        boolean isValid = false;
+        while(!isValid) {
+            cars = Cars.inputCars();
+            isValid = Cars.checkInput(cars);
+        }
+
+//        try {
+//            isValid =
+//        } catch(IllegalArgumentException e) {
+//            e.getMessage();
+//            race();
+//        }
+
+
+        String[] result = new String[cars.length];
+
         int tryCount = Racing.inputTry();
-        // 자동차 이동
         for (int i = 0; i < cars.length; i++) {
             result[i] = Racing.moveCar(tryCount);
         }
@@ -19,7 +33,7 @@ public class Controller {
         for (int j = 0; j < cars.length; j++) {
             System.out.println(cars[j] + " : " + result[j]);
         }
-        String winners = Racing.whoIsWinner(cars, result);
+        String winners = Racing.setWinner(cars, result);
 
         System.out.println("최종 우승자는 "+ winners +" 입니다.");
     }
