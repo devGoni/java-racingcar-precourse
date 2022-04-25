@@ -14,21 +14,12 @@ public class Controller {
             isValid = Cars.checkInput(cars);
         }
 
-//        try {
-//            isValid =
-//        } catch(IllegalArgumentException e) {
-//            e.getMessage();
-//            race();
-//        }
-
-
         String[] result = new String[cars.length];
 
         int tryCount = Racing.inputTry();
         for (int i = 0; i < cars.length; i++) {
             result[i] = Racing.moveCar(tryCount);
         }
-
 
         for (int j = 0; j < cars.length; j++) {
             System.out.println(cars[j] + " : " + result[j]);
